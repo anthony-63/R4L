@@ -3,14 +3,20 @@
 # F1-FE are the arguments of the function to call
 # FF is the accumulator register
 
-# slen takes the arguments:
-#   
+# slen - gets the length of a string
+# slen args:
+#   F1: the address of the string to find the length of
+
+# sput - prints out a string
+# sput args:
+#   F1: the address of the string to print
+#   F2: the length of the string to print
 
 [F1] <- hello # this moves the address of the string hello world into F1
-[F0] <- int_slen # this moves the addres of the internal function slen(which gets the length of the string)
+[F0] <- int_slen # this moves the addres of the internal function slen into F0
 call # calls slen
-[FF, F2] <- _ # moves the value of FF into F2
-[F0] <- int_sput # moves the address of sput(which prints out the string in )
-call
+[FF, F2] <- _ # moves the value of FF(which contains the length) into F2
+[F0] <- int_sput # moves the address of sput into F0
+call # calls sput
 
 [str:hello] <- "Hello world" 
