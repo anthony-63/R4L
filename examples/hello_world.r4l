@@ -1,0 +1,16 @@
+# Before the code let me explain the calling convention for functions
+# F0 is the address of the function to call
+# F1-FE are the arguments of the function to call
+# FF is the accumulator register
+
+# slen takes the arguments:
+#   
+
+[F1] <- hello # this moves the address of the string hello world into F1
+[F0] <- int_slen # this moves the addres of the internal function slen(which gets the length of the string)
+call # calls slen
+[FF, F2] <- _ # moves the value of FF into F2
+[F0] <- int_sput # moves the address of sput(which prints out the string in )
+call
+
+[str:hello] <- "Hello world" 
